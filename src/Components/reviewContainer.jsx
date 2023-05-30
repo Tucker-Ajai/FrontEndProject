@@ -21,7 +21,6 @@ export default function ReviewContainer() {
     <>
       Container
       <ul>
-        {console.log(list)}
       {list.map((obj)=>{
         return <li key = {obj.review_id}>
             {obj.title}<br/>
