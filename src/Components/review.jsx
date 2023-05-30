@@ -19,7 +19,6 @@ export default function Review() {
   }, []);
 
   if (isLoading) {
-      setTimeout(2000)
     return <p>Page is Loading</p>;
   }
 
@@ -34,12 +33,7 @@ export default function Review() {
 {review.review_body}<br/><br/>
 Posted by: {review.owner} at {review.created_at}<br/><br/>
 
-{comments.length === 0 ?  "There are no Comments" : <ul>Comments: <br/> <br/>{comments.map((obj)=>{
-return <li key = {obj.comment_id}>
-    {obj.body} <br/>
-    Posted by: {obj.author} at {obj.created_at} <br/> <br/>
-</li>
-})}</ul>}
+
 
     </main>
   );
