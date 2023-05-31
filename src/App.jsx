@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import './App.css'
 import { Route, Routes,BrowserRouter } from 'react-router-dom'
 import Header from './Components/header'
@@ -8,8 +7,6 @@ import Homepage from './Components/homepage'
 import Review from './Components/review'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <BrowserRouter>
     <Header/>

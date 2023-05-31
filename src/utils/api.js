@@ -15,18 +15,3 @@ export function getReview(id) {
     return response.data;
   });
 }
-
-export function getReviewsComments(id) {
-  return server
-    .get(`/reviews/${id}/comments`)
-    .then((response) => {
-      return response.data.reviewComments;
-    })
-    .catch((err) => {
-      if (err.response.status === 404) {
-        return []
-      } else {
-        console.log(err);
-      }
-    });
-}
