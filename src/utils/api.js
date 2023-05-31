@@ -16,7 +16,6 @@ export function getReview(id) {
   });
 }
 
-
 export function getReviewsComments(id) {
   return server
     .get(`/reviews/${id}/comments`)
@@ -25,9 +24,17 @@ export function getReviewsComments(id) {
     })
     .catch((err) => {
       if (err.response.status === 404) {
-        return []
+        return [];
       } else {
         console.log(err);
       }
     });
+}
+
+export function voteUpdate(id, num) {
+  return server.patch(`/reviews/${id}`, { inc_votes: num }).then((response) => {
+    console.log(response);
+  }).catch((err)=>{
+console.log(err)
+  })
 }
