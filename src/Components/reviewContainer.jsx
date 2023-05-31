@@ -26,7 +26,7 @@ export default function ReviewContainer() {
             {obj.title}<br/>
             Reviewed by {obj.owner} on {obj.created_at}<br></br>
            Number of Comments {obj.comment_count}<br/>
-            <img src = {obj.review_img_url}/><br/>
+            <img src = {obj.review_img_url} alt={`box art of ${obj.title}`}/><br/>
             <Link to={`/reviews/${obj.review_id}`}> Click here for more </Link><br/><br/>
         </li>
           
