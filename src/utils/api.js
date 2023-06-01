@@ -26,23 +26,20 @@ export function getReviewsComments(id) {
       if (err.response.status === 404) {
         return [];
       } else {
-        console.log(err);
       }
     });
 }
 
 export function voteUpdate(id, num) {
-  return server.patch(`/reviews/${id}`, { inc_votes: num }).then((response) => {
-    console.log(response);
-  }).catch((err)=>{
-console.log(err)
-  })
+  return server
+    .patch(`/reviews/${id}`, { inc_votes: num })
+    .then((response) => {})
+    .catch((err) => {});
 }
 
-export function postComment(id,post){
-  return server.post(`/reviews/${id}/comments`, post).then((response)=>{
-    console.log(response)
-  }).catch((err)=>{
-console.log(err)
-  })
+export function postComment(id, post) {
+  return server
+    .post(`/reviews/${id}/comments`, post)
+    .then((response) => {})
+    .catch((err) => {});
 }

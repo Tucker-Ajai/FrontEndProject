@@ -6,10 +6,12 @@ export default function NavBar() {
   const {user,setUser} = useContext(UserContext)
   return (
     <nav>
-      <Link to={`/reviews`}>Home Page</Link> <br />
+      <Link to={`/`}>Home Page</Link> <br />
       <Link to={`/reviews`}>Brief Reviews </Link><br/>
-      user =
-      <img src = {user.avatar_url} width="50"/>
+      <aside id="UserInfo">
+        {user.username}
+      <img src = {user.avatar_url} width="50" alt = {`${user.username}'s chosen icon`} />
+      </aside> 
     </nav>
   );
 }

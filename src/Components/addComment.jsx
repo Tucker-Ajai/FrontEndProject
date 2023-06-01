@@ -2,28 +2,34 @@ import { useContext, useState } from "react";
 import { UserContext } from "../Context/userContext";
 import { postComment } from "../utils/api";
 
-export default function PostComment({ review_id, setComments }) {
+export default function CommentForm({ review_id, setComments }) {
   const { user } = useContext(UserContext);
   const [addComment, setaddComment] = useState("");
+  const [errored, setErrored] = useState("");
+  const regex = /\w/g;
 
   function handleSumbit(event) {
     event.preventDefault();
-    postComment(review_id, { username: user.username, body: addComment });
-    const addedComment = 1;
+    if (regex.test(addComment)) {
+      setErrored(false);
+      postComment(review_id, { username: user.username, body: addComment });
 
-    setComments((currValue) => {
-      return [
-        {
-          comment_id: 0,
-          author: user.username,
-          body: addComment,
-          created_at: Date.now(),
-        },
-        ...currValue,
-      ];
-    });
+      setComments((currValue) => {
+        return [
+          {
+            comment_id: currValue[0].comment_id + 1,
+            author: user.username,
+            body: addComment,
+            created_at:new Date().toISOString(),
+          },
+          ...currValue,
+        ];
+      });
 
-    setaddComment("");
+      setaddComment("");
+    } else {
+      setErrored(true);
+    }
   }
 
   return (
@@ -34,9 +40,11 @@ export default function PostComment({ review_id, setComments }) {
             setaddComment(event.target.value);
           }}
           value={addComment}
-        />
+         rows="5" cols ="75"/>
         <br></br>
         <button>Submit Comment</button>
+        <br></br>
+        {errored ? <>Was unable to submit comment due to lack of content</> : <></>}
       </form>
       Comments section
     </>

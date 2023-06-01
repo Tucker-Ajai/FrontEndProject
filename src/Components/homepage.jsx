@@ -7,9 +7,9 @@ export default function Homepage (){
 
     return(
         <>
-        Homepage
-        Work in Progress<br></br>
-        <Link to="/reviews">Click here</Link>
+        Homepage WIP
+        <br/>
+        Select one of the categories below to get started
         </>
     )
 }

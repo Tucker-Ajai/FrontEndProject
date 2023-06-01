@@ -3,8 +3,8 @@
 export default function Header (){
 
     return(
-        <>
-        Header
-        </>
+        <h1>
+        Games Review
+        </h1>
     )
 }
