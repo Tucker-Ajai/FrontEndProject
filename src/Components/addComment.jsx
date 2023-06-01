@@ -40,7 +40,7 @@ export default function CommentForm({ review_id, setComments }) {
             setaddComment(event.target.value);
           }}
           value={addComment}
-         rows="5" cols ="75"/>
+         id="commentbox"/>
         <br></br>
         <button>Submit Comment</button>
         <br></br>
