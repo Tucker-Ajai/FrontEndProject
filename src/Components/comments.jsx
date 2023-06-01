@@ -2,6 +2,7 @@ export default function Comment({ review, comments }) {
   return (
     <>
       <br />
+      {console.log(comments)}
       {comments.length === 0 ? (
         "There are no Comments"
       ) : (

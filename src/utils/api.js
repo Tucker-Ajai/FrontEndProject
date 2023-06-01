@@ -38,3 +38,11 @@ export function voteUpdate(id, num) {
 console.log(err)
   })
 }
+
+export function postComment(id,post){
+  return server.post(`/reviews/${id}/comments`, post).then((response)=>{
+    console.log(response)
+  }).catch((err)=>{
+console.log(err)
+  })
+}

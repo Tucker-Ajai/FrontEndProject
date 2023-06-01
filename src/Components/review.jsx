@@ -3,6 +3,7 @@ import { getReview, getReviewsComments } from "../utils/api";
 import { useEffect, useState } from "react";
 import Comment from "./comments";
 import VoteButton from "./voteButton";
+import PostComment from "./addComment";
 
 export default function Review() {
   const { review_id } = useParams();
@@ -47,6 +48,10 @@ export default function Review() {
       <br />
       <br />
       <VoteButton review={review} />
+<br></br>
+
+<PostComment review_id={review_id} setComments={setComments}/>
+
       <Comment review={review} comments={comments} />
     </main>
   );
