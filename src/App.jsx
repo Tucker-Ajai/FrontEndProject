@@ -7,6 +7,7 @@ import Homepage from "./Components/homepage";
 import Review from "./Components/review";
 import { useState } from "react";
 import { UserContext } from "./Context/userContext";
+import NotFound from "./Components/NoLink";
 
 function App() {
   const [user, setUser] =useState(
@@ -28,6 +29,7 @@ function App() {
         <Route path="/reviews" element={<ReviewContainer />} />
 
         <Route path="/reviews/:review_id" element={<Review />} />
+        <Route path="*" element={<NotFound/>}/>
       </Routes>
       </UserContext.Provider>
     </BrowserRouter>

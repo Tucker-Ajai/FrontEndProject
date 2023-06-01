@@ -30,6 +30,9 @@ export default function Review() {
   if (isLoading === true) {
     return <p>Page is Loading</p>;
   }
+  if(review.msg){
+    return(<>No matching review</>)
+  }
   return (
     <main>
       Page for: {review.title}
