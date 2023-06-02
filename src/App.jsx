@@ -2,7 +2,7 @@ import "./App.css";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 import Header from "./Components/header";
 import NavBar from "./Components/navBar";
-import ReviewContainer from "./Components/reviewContainer";
+import ReviewList from "./Components/reviewContainer";
 import Homepage from "./Components/homepage";
 import Review from "./Components/review";
 import { useState } from "react";
@@ -26,7 +26,7 @@ function App() {
       <NavBar />
       <Routes>
         <Route path="/" element={<Homepage />} />
-        <Route path="/reviews" element={<ReviewContainer />} />
+        <Route path="/reviews" element={<ReviewList />} />
 
         <Route path="/reviews/:review_id" element={<Review />} />
         <Route path="*" element={<NotFound/>}/>

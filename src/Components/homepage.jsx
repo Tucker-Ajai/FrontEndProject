@@ -28,16 +28,22 @@ export default function Homepage() {
       Select one of the categories below to get started
       <ul>
         {categories.map((category, index) => {
-          return (
-                <button key = {index}>
+          return (<div key = {index}>
+
+                <button >
             <Link to={`/reviews?category=${category.slug}`}>
               <li>
-                  Category: {category.slug}
+                {category.slug}
                   <br />
-                  Description:{category.description}
+               
               </li>
             </Link>
-                </button>
+                </button><br></br>
+                <details>
+<summary>Description</summary>
+        {category.description}
+                </details>
+          </div>
           );
         })}
       </ul>

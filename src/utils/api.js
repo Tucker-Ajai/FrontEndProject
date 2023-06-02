@@ -4,15 +4,12 @@ const server = axios.create({
   baseURL: "https://ajai-back-end-project.onrender.com/api",
 });
 
-export function listOfReviews(search) {
-  let params = {};
-  if (search) {
-    let str = search.split("&");
-    str.map((arr) => {
-      let edited = arr.split("=");
-      params[edited[0]] = edited[1];
-    });
+export function listOfReviews(params) {
+  let outer = {}
+  if(params){
+    outer.params = {params}
   }
+ 
   return server.get(`/reviews`, { params }).then((response) => {
     return response.data.review.rows;
   });
