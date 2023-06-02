@@ -1,27 +1,42 @@
 import { useState, useEffect } from "react";
 import { listOfReviews } from "../utils/api";
 import { Link } from "react-router-dom";
+import { useLocation} from "react-router-dom";
+
+
+
 
 export default function ReviewContainer() {
   const [list, setList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-
+  const {search} = useLocation()
+  const [searched,setSearched]=useState()
+  const params = search.replace("?","")
+  
   useEffect(() => {
-    listOfReviews().then((response) => {
+    listOfReviews(params).then((response) => {
    setList(response)
-      setIsLoading(false);
+   setIsLoading(false);
     });
-    },[]);
-
+  },[searched]);
+  
+ 
   if (isLoading) {
     return <p>Page is Loading</p>;
   }
-
+  
+  if(list.length === 0 && search){
+    return(<>
+    There are Currently no games matching that category</>)
+  }
+  
   return (
     <>
-      Container
+   container
+   
       <ul>
       {list.map((obj)=>{
+
         return <li key = {obj.review_id}>
             {obj.title}<br/>
             Reviewed by {obj.owner} on {obj.created_at}<br></br>

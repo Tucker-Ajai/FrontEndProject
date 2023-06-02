@@ -4,8 +4,16 @@ const server = axios.create({
   baseURL: "https://ajai-back-end-project.onrender.com/api",
 });
 
-export function listOfReviews() {
-  return server.get(`/reviews`).then((response) => {
+export function listOfReviews(search) {
+  let params = {};
+  if (search) {
+    let str = search.split("&");
+    str.map((arr) => {
+      let edited = arr.split("=");
+      params[edited[0]] = edited[1];
+    });
+  }
+  return server.get(`/reviews`, { params }).then((response) => {
     return response.data.review.rows;
   });
 }
@@ -42,4 +50,10 @@ export function postComment(id, post) {
     .post(`/reviews/${id}/comments`, post)
     .then((response) => {})
     .catch((err) => {});
+}
+
+export function getCategories() {
+  return server.get(`/categories`).then((response) => {
+    return response.data.categories;
+  });
 }

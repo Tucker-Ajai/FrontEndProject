@@ -10,23 +10,24 @@ export default function Review() {
   const [review, setReview] = useState([]);
   const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-
+  
+  
   useEffect(() => {
     getReview(review_id)
+    .then((response) => {
+      setReview(response);
+    })
+    .then(() => {
+      getReviewsComments(review_id)
       .then((response) => {
-        setReview(response);
+        setComments(response);
       })
       .then(() => {
-        getReviewsComments(review_id)
-          .then((response) => {
-            setComments(response);
-          })
-          .then(() => {
-            setIsLoading(false);
-          });
+        setIsLoading(false);
       });
+    });
   }, []);
-
+  
   if (isLoading === true) {
     return <p>Page is Loading</p>;
   }
@@ -35,6 +36,7 @@ export default function Review() {
   }
   return (
     <main>
+     
       Page for: {review.title}
       <br />
       Designer: {review.designer}
